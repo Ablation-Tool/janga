@@ -55,16 +55,22 @@ JANGA is a **search-result organizer, not an ad blocker**. It changes the presen
 ```text
 Install JANGA from https://github.com/Ablation-Tool/janga for me.
 
-Clone the repository if it is not already present, then run the included
-scripts/install.sh script. Use Chrome by default, or Edge if I ask for it.
-The script should verify that manifest.json exists and open the appropriate
-browser extensions page.
+Clone the repository if it is absent. For an existing checkout, verify that
+its origin matches that URL and check for uncommitted changes. Do not reset,
+clean, overwrite, or pull over local changes. Stop and ask if either check
+needs my attention.
 
-Do not use sudo, change browser security settings, enable remote debugging,
-or attempt to bypass the browser's unpacked-extension confirmation flow.
+Read scripts/install.sh and manifest.json before executing anything. Confirm
+that the script only prepares JANGA and opens the extensions page, and that
+the manifest requests only storage and Amazon search-page access. Stop and
+report unexpected code or permissions.
+
+Run scripts/install.sh. Use Chrome by default, or Edge if I ask. Stop on
+errors and do not use sudo, alternate download sources, remote debugging, or
+browser-security bypasses.
 
 Give me the exact installation folder, then guide me while I manually enable
-Developer mode and choose Load unpacked. Finish by telling me how to open an
+Developer mode and choose Load unpacked. Finish by helping me open an
 Amazon.com search and confirm that the JANGA panel appears.
 ```
 
