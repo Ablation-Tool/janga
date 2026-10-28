@@ -47,6 +47,53 @@ JANGA is a **search-result organizer, not an ad blocker**. It changes the presen
 
 ---
 
+## Operations
+
+<details>
+<summary><strong>Use JANGA on Amazon</strong></summary>
+
+1. Go to https://www.amazon.com and perform a product search.
+2. Open the **JANGA** panel at the bottom-right of the results page.
+3. Choose how to handle sponsored product cards:
+
+| Mode | Behavior |
+|:---|:---|
+| **Show in original positions** | Keeps Amazon's sponsored-card placement. |
+| **Separate below organic results** | Moves sponsored cards into a collapsible section. |
+| **Hide on every search** | Hides sponsored cards and saves that preference for future searches. |
+
+4. Choose the number of organic products to display and, optionally, a displayed-price order.
+5. Click **Apply**. Larger counts retrieve additional Amazon pages; **Stop loading** cancels an active load.
+6. Click **Mark as sponsored** on a missed sponsored product. To reverse a manual mark, open the sponsored section and click **Undo sponsored mark**.
+
+Default display settings are also available on JANGA's **Options** page. Preferences and manual marks persist through browser extension storage.
+
+</details>
+
+<details>
+<summary><strong>Search-Result Organizer, Not an Ad Blocker</strong></summary>
+
+JANGA changes how Amazon.com search results appear in your browser after Amazon delivers the page.
+
+- It organizes, separates, or hides sponsored **product cards in the search-result list** according to your preferences.
+- It does not block advertising requests, prevent sponsored content from being delivered, block trackers, or interfere with Amazon's advertising systems.
+- It does not remove large brand banners, sponsored brand modules, video ads, pop-ups, or advertising outside the product-result list.
+- Manual sponsored marks are personal display preferences. They are not spam reports, seller reports, or complaints submitted to Amazon.
+- It only runs on Amazon.com search pages.
+
+</details>
+
+<details>
+<summary><strong>Result Counts & Price Sorting</strong></summary>
+
+Amazon does not offer a reliable arbitrary page-size setting. For 100, 200, or 300 products, JANGA requests successive search pages, removes duplicate ASINs, and appends organic products until it reaches the requested count or Amazon returns no more usable results. Sponsored products do not count toward the target.
+
+Price sorting applies only to products loaded into the current page. It does not establish the lowest price across all Amazon results. Sorting uses the visible product price and does not include shipping, coupons, Subscribe & Save pricing, or unselected variations. Products without a usable displayed price are placed last.
+
+Amazon may change its markup or present an access-control page. The loader stops rather than attempting to bypass CAPTCHAs or other controls.
+
+</details>
+
 ## Setup & About
 
 <details>
@@ -114,53 +161,6 @@ This creates a folder named `janga`.
 Select the folder that directly contains `manifest.json`, `content.js`, and the other extension files. Do not select the ZIP file or an outer folder. JANGA should appear in the installed-extension list.
 
 **Updating:** Replace the old files with a new download, click **Reload** on JANGA in the browser's extension list, and refresh open Amazon searches.
-
-</details>
-
-## Operations
-
-<details>
-<summary><strong>Use JANGA on Amazon</strong></summary>
-
-1. Go to https://www.amazon.com and perform a product search.
-2. Open the **JANGA** panel at the bottom-right of the results page.
-3. Choose how to handle sponsored product cards:
-
-| Mode | Behavior |
-|:---|:---|
-| **Show in original positions** | Keeps Amazon's sponsored-card placement. |
-| **Separate below organic results** | Moves sponsored cards into a collapsible section. |
-| **Hide on every search** | Hides sponsored cards and saves that preference for future searches. |
-
-4. Choose the number of organic products to display and, optionally, a displayed-price order.
-5. Click **Apply**. Larger counts retrieve additional Amazon pages; **Stop loading** cancels an active load.
-6. Click **Mark as sponsored** on a missed sponsored product. To reverse a manual mark, open the sponsored section and click **Undo sponsored mark**.
-
-Default display settings are also available on JANGA's **Options** page. Preferences and manual marks persist through browser extension storage.
-
-</details>
-
-<details>
-<summary><strong>Search-Result Organizer, Not an Ad Blocker</strong></summary>
-
-JANGA changes how Amazon.com search results appear in your browser after Amazon delivers the page.
-
-- It organizes, separates, or hides sponsored **product cards in the search-result list** according to your preferences.
-- It does not block advertising requests, prevent sponsored content from being delivered, block trackers, or interfere with Amazon's advertising systems.
-- It does not remove large brand banners, sponsored brand modules, video ads, pop-ups, or advertising outside the product-result list.
-- Manual sponsored marks are personal display preferences. They are not spam reports, seller reports, or complaints submitted to Amazon.
-- It only runs on Amazon.com search pages.
-
-</details>
-
-<details>
-<summary><strong>Result Counts & Price Sorting</strong></summary>
-
-Amazon does not offer a reliable arbitrary page-size setting. For 100, 200, or 300 products, JANGA requests successive search pages, removes duplicate ASINs, and appends organic products until it reaches the requested count or Amazon returns no more usable results. Sponsored products do not count toward the target.
-
-Price sorting applies only to products loaded into the current page. It does not establish the lowest price across all Amazon results. Sorting uses the visible product price and does not include shipping, coupons, Subscribe & Save pricing, or unselected variations. Products without a usable displayed price are placed last.
-
-Amazon may change its markup or present an access-control page. The loader stops rather than attempting to bypass CAPTCHAs or other controls.
 
 </details>
 
