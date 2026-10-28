@@ -49,3 +49,7 @@ Basic syntax checks:
 node --check content.js
 node --check options.js
 ```
+
+## License
+
+JANGA is free and open-source software under the [MIT License](LICENSE). You may use, modify, and distribute it, including for commercial purposes, provided the copyright and license notice are retained. The software is provided without warranty.
