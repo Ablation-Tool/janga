@@ -50,7 +50,7 @@ JANGA is a **search-result organizer, not an ad blocker**. It changes the presen
 ## Setup & About
 
 <details>
-<summary><strong>Install in Chrome or Microsoft Edge</strong></summary>
+<summary><strong>Manual Install</strong></summary>
 
 **Requirements:** Google Chrome or Microsoft Edge. No Node.js installation, package installation, build step, or Chrome Web Store download is required.
 
@@ -87,6 +87,54 @@ This creates a folder named `janga`.
 Select the folder that directly contains `manifest.json`, `content.js`, and the other extension files. Do not select the ZIP file or an outer folder. JANGA should appear in the installed-extension list.
 
 **Updating:** Replace the old files with a new download, click **Reload** on JANGA in the browser's extension list, and refresh open Amazon searches.
+
+</details>
+
+<details>
+<summary><strong>AI Agent Install</strong></summary>
+
+Hand this prompt to your AI coding agent. It includes the repository location, the automated installer, and the manual browser step that Chrome and Edge require.
+
+```text
+Install JANGA from https://github.com/Ablation-Tool/janga for me.
+
+Clone the repository if it is not already present, then run the included
+scripts/install.sh script. Use Chrome by default, or Edge if I ask for it.
+The script should verify that manifest.json exists and open the appropriate
+browser extensions page.
+
+Do not use sudo, change browser security settings, enable remote debugging,
+or attempt to bypass the browser's unpacked-extension confirmation flow.
+
+Give me the exact installation folder, then guide me while I manually enable
+Developer mode and choose Load unpacked. Finish by telling me how to open an
+Amazon.com search and confirm that the JANGA panel appears.
+```
+
+Run the installer directly on macOS or Linux with Git and Bash:
+
+```bash
+git clone https://github.com/Ablation-Tool/janga.git
+cd janga
+bash scripts/install.sh
+```
+
+By default, the script uses `$HOME/janga` and opens Chrome's extension page. It reuses an existing JANGA directory rather than overwriting it and refuses to use a nonempty directory that does not contain JANGA.
+
+Optional settings:
+
+```bash
+# Use a different installation directory
+bash scripts/install.sh "$HOME/extensions/janga"
+
+# Open Microsoft Edge instead
+JANGA_BROWSER=edge bash scripts/install.sh
+
+# Prepare the files without launching a browser
+JANGA_NO_OPEN=1 bash scripts/install.sh
+```
+
+The script downloads and verifies the extension files but cannot complete **Developer mode** and **Load unpacked** for you. Chrome and Edge intentionally require those steps in their extension interface. Windows users can follow the manual installation section or let their agent adapt the process for Git Bash or WSL.
 
 </details>
 
