@@ -12,7 +12,7 @@ A local, dependency-free Chrome and Edge extension that cleans up Amazon.com sea
 - Save preferences across searches and browsers that support extension storage sync.
 - Stop an in-progress page load at any time.
 
-## Search-result organizer—not an ad blocker
+## Search-result organizer not an ad blocker
 
 JANGA is a **search-result organizer**, not a general-purpose ad blocker. It changes how Amazon.com search results are displayed in your browser after Amazon delivers the page.
 
