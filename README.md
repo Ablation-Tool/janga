@@ -50,47 +50,6 @@ JANGA is a **search-result organizer, not an ad blocker**. It changes the presen
 ## Setup & About
 
 <details>
-<summary><strong>Manual Install</strong></summary>
-
-**Requirements:** Google Chrome or Microsoft Edge. No Node.js installation, package installation, build step, or Chrome Web Store download is required.
-
-**1. Download JANGA**
-
-Download a ZIP file:
-
-1. Open https://github.com/Ablation-Tool/janga.
-2. Click the green **Code** button, then choose **Download ZIP**.
-3. Unzip the file. This normally creates a folder named `janga-main`.
-
-Or download with Git:
-
-```bash
-git clone https://github.com/Ablation-Tool/janga.git
-```
-
-This creates a folder named `janga`.
-
-**2. Load the extension in Google Chrome**
-
-1. Open `chrome://extensions` in a new tab.
-2. Turn on **Developer mode** near the top-right.
-3. Click **Load unpacked** near the top-left.
-4. Select the `janga-main` or `janga` folder, then click **Select Folder**.
-
-**3. Load the extension in Microsoft Edge**
-
-1. Open `edge://extensions` in a new tab.
-2. Turn on **Developer mode** in the left sidebar.
-3. Click **Load unpacked** near the top of the page.
-4. Select the `janga-main` or `janga` folder, then click **Select Folder**.
-
-Select the folder that directly contains `manifest.json`, `content.js`, and the other extension files. Do not select the ZIP file or an outer folder. JANGA should appear in the installed-extension list.
-
-**Updating:** Replace the old files with a new download, click **Reload** on JANGA in the browser's extension list, and refresh open Amazon searches.
-
-</details>
-
-<details>
 <summary><strong>AI Agent Install</strong></summary>
 
 Hand this prompt to your AI coding agent. It includes the repository location, the automated installer, and the manual browser step that Chrome and Edge require.
@@ -135,6 +94,47 @@ JANGA_NO_OPEN=1 bash scripts/install.sh
 ```
 
 The script downloads and verifies the extension files but cannot complete **Developer mode** and **Load unpacked** for you. Chrome and Edge intentionally require those steps in their extension interface. Windows users can follow the manual installation section or let their agent adapt the process for Git Bash or WSL.
+
+</details>
+
+<details>
+<summary><strong>Manual Install</strong></summary>
+
+**Requirements:** Google Chrome or Microsoft Edge. No Node.js installation, package installation, build step, or Chrome Web Store download is required.
+
+**1. Download JANGA**
+
+Download a ZIP file:
+
+1. Open https://github.com/Ablation-Tool/janga.
+2. Click the green **Code** button, then choose **Download ZIP**.
+3. Unzip the file. This normally creates a folder named `janga-main`.
+
+Or download with Git:
+
+```bash
+git clone https://github.com/Ablation-Tool/janga.git
+```
+
+This creates a folder named `janga`.
+
+**2. Load the extension in Google Chrome**
+
+1. Open `chrome://extensions` in a new tab.
+2. Turn on **Developer mode** near the top-right.
+3. Click **Load unpacked** near the top-left.
+4. Select the `janga-main` or `janga` folder, then click **Select Folder**.
+
+**3. Load the extension in Microsoft Edge**
+
+1. Open `edge://extensions` in a new tab.
+2. Turn on **Developer mode** in the left sidebar.
+3. Click **Load unpacked** near the top of the page.
+4. Select the `janga-main` or `janga` folder, then click **Select Folder**.
+
+Select the folder that directly contains `manifest.json`, `content.js`, and the other extension files. Do not select the ZIP file or an outer folder. JANGA should appear in the installed-extension list.
+
+**Updating:** Replace the old files with a new download, click **Reload** on JANGA in the browser's extension list, and refresh open Amazon searches.
 
 </details>
 
