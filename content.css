@@ -1,0 +1,33 @@
+.acr-hidden {
+  display: none !important;
+}
+
+#acr-sponsored-section {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 24px 0;
+  padding: 16px;
+  clear: both;
+  border: 1px solid #d5d9d9;
+  border-radius: 8px;
+  background: #fff;
+  color: #0f1111;
+  font-family: Arial, sans-serif;
+}
+
+#acr-sponsored-section summary {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+#acr-sponsored-list {
+  margin-top: 16px;
+}
+
+#acr-panel-host {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 2147483647;
+}

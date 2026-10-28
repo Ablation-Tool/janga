@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "JANGA",
+  "version": "1.0.0",
+  "description": "Separate or hide sponsored results, combine search pages, and sort loaded products by displayed price.",
+  "permissions": ["storage"],
+  "content_scripts": [
+    {
+      "matches": ["https://www.amazon.com/s*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "options_page": "options.html",
+  "web_accessible_resources": [
+    {
+      "resources": ["panel.css"],
+      "matches": ["https://www.amazon.com/*"]
+    }
+  ]
+}

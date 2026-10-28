@@ -1,0 +1,63 @@
+:root {
+  color-scheme: light dark;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: Canvas;
+  color: CanvasText;
+}
+
+main {
+  box-sizing: border-box;
+  max-width: 560px;
+  margin: 48px auto;
+  padding: 32px;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 26px;
+}
+
+form {
+  display: grid;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+label {
+  margin-top: 10px;
+  font-weight: 650;
+}
+
+select,
+button {
+  box-sizing: border-box;
+  min-height: 42px;
+  padding: 8px 12px;
+  font: inherit;
+}
+
+button {
+  margin-top: 20px;
+  border: 0;
+  border-radius: 6px;
+  background: #146eb4;
+  color: white;
+  cursor: pointer;
+  font-weight: 650;
+}
+
+.note {
+  margin-top: 28px;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+#status {
+  min-height: 20px;
+  margin: 4px 0 0;
+}
