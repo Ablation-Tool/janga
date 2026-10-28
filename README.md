@@ -22,14 +22,61 @@ JANGA is a **search-result organizer**, not a general-purpose ad blocker. It cha
 - Manual sponsored marks are personal display preferences saved for your browser. They are not spam reports, seller reports, or complaints submitted to Amazon.
 - It only runs on Amazon.com search pages and includes no analytics, remote code, or product data collection.
 
-## Install
+## Install in Chrome or Microsoft Edge
 
-1. Open `chrome://extensions` in Chrome or `edge://extensions` in Edge.
-2. Enable **Developer mode**.
-3. Choose **Load unpacked** and select this repository's directory.
-4. Open an Amazon.com search. The **JANGA** panel appears at the bottom-right of the page.
+JANGA is installed directly from this repository as an unpacked extension. You do not need to install Node.js, run a build, or use the Chrome Web Store.
 
-Use the panel's **Apply** button after changing its settings. The same defaults are available from the extension's **Options** page. Choosing **Hide** and applying it saves the preference, so sponsored products stay hidden on future searches.
+### 1. Download JANGA
+
+**Option A: Download a ZIP file**
+
+1. Open https://github.com/Ablation-Tool/janga in your browser.
+2. Click the green **Code** button, then choose **Download ZIP**.
+3. Unzip the downloaded file. This normally creates a folder named `janga-main`.
+
+**Option B: Download with Git**
+
+```sh
+git clone https://github.com/Ablation-Tool/janga.git
+```
+
+This creates a folder named `janga`.
+
+### 2. Load the extension
+
+**Google Chrome**
+
+1. Open a new tab and enter `chrome://extensions` in the address bar.
+2. Turn on **Developer mode** using the switch near the top-right.
+3. Click **Load unpacked** near the top-left.
+4. Select the `janga-main` or `janga` folder you just downloaded, then click **Select Folder**.
+
+**Microsoft Edge**
+
+1. Open a new tab and enter `edge://extensions` in the address bar.
+2. Turn on **Developer mode** in the left sidebar.
+3. Click **Load unpacked** near the top of the page.
+4. Select the `janga-main` or `janga` folder you just downloaded, then click **Select Folder**.
+
+Select the folder that directly contains `manifest.json`, `content.js`, and the other extension files. Do not select the ZIP file or an outer folder. JANGA should now appear in your list of installed extensions.
+
+### 3. Use JANGA on Amazon
+
+1. Go to https://www.amazon.com and perform a product search.
+2. The **JANGA** panel appears at the bottom-right of the search page.
+3. Choose how to handle sponsored product cards:
+   - **Show in original positions** keeps Amazon's placement.
+   - **Separate below organic results** moves them into a collapsible sponsored section.
+   - **Hide on every search** hides them and saves that preference for future searches.
+4. Choose how many organic products to display and, optionally, a displayed-price order.
+5. Click **Apply**. Larger counts retrieve additional Amazon pages; use **Stop loading** to cancel.
+6. If JANGA misses a sponsored product, click **Mark as sponsored** on that product card. Use **Undo sponsored mark** in the sponsored section if you marked it by mistake.
+
+The same default display settings are available on the extension's **Options** page. Manual sponsored marks and preferences are saved through your browser's extension storage.
+
+### Updating after a new download
+
+Replace the old extension files with the new ones, open the browser's extensions page, click **Reload** on JANGA, and refresh any open Amazon searches.
 
 ## How result counts work
 
