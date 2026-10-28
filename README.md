@@ -11,11 +11,11 @@ JANGA is a **search-result organizer, not an ad blocker**. It changes the presen
 
 | Capability | Code | Description |
 |:---|:---|:---|
-| **Original Placement** | [content.js](content.js) | Keeps sponsored product cards in the positions supplied by Amazon. |
-| **Separate Sponsored Section** | [content.js](content.js) | Moves sponsored cards into a collapsible section below organic results. |
-| **Persistent Hide Mode** | [content.js](content.js) | Hides sponsored cards on the current search and future searches. |
-| **Manual Sponsored Marks** | [content.js](content.js) | Marks missed sponsored cards with one click and provides an undo control for manual marks. |
-| **Organic Duplicate Preference** | [content.js](content.js) | Keeps the organic card when sponsored and organic results share an ASIN. |
+| [**Original Placement**](docs/capabilities.md#original-placement) | [1](content.js) | Keeps sponsored product cards in the positions supplied by Amazon. |
+| [**Separate Sponsored Section**](docs/capabilities.md#separate-sponsored-section) | [1](content.js) | Moves sponsored cards into a collapsible section below organic results. |
+| [**Persistent Hide Mode**](docs/capabilities.md#persistent-hide-mode) | [1](content.js) | Hides sponsored cards on the current search and future searches. |
+| [**Manual Sponsored Marks**](docs/capabilities.md#manual-sponsored-marks) | [1](content.js) | Marks missed sponsored cards with one click and provides an undo control for manual marks. |
+| [**Organic Duplicate Preference**](docs/capabilities.md#organic-duplicate-preference) | [1](content.js) | Keeps the organic card when sponsored and organic results share an ASIN. |
 
 </details>
 
@@ -24,11 +24,11 @@ JANGA is a **search-result organizer, not an ad blocker**. It changes the presen
 
 | Capability | Code | Description |
 |:---|:---|:---|
-| **Selectable Result Counts** | [content.js](content.js) | Displays 10, 100, 200, or 300 organic products instead of navigating individual pages. |
-| **Successive-Page Loading** | [content.js](content.js) | Retrieves additional same-origin Amazon search pages with a request limit and cancellation control. |
-| **ASIN Deduplication** | [content.js](content.js) | Prevents duplicate products from being appended across page boundaries. |
-| **Displayed-Price Sorting** | [content.js](content.js) | Sorts loaded organic products low to high or high to low, placing products without usable prices last. |
-| **Access-Control Handling** | [content.js](content.js) | Stops on CAPTCHAs, access-control pages, request failures, and unusable responses without bypass attempts. |
+| [**Selectable Result Counts**](docs/capabilities.md#selectable-result-counts) | [1](content.js) | Displays 10, 100, 200, or 300 organic products instead of navigating individual pages. |
+| [**Successive-Page Loading**](docs/capabilities.md#successive-page-loading) | [1](content.js) | Retrieves additional same-origin Amazon search pages with a request limit and cancellation control. |
+| [**ASIN Deduplication**](docs/capabilities.md#asin-deduplication) | [1](content.js) | Prevents duplicate products from being appended across page boundaries. |
+| [**Displayed-Price Sorting**](docs/capabilities.md#displayed-price-sorting) | [1](content.js) | Sorts loaded organic products low to high or high to low, placing products without usable prices last. |
+| [**Access-Control Handling**](docs/capabilities.md#access-control-handling) | [1](content.js) | Stops on CAPTCHAs, access-control pages, request failures, and unusable responses without bypass attempts. |
 
 </details>
 
@@ -37,11 +37,11 @@ JANGA is a **search-result organizer, not an ad blocker**. It changes the presen
 
 | Capability | Description |
 |:---|:---|
-| **Sponsored-Label Detection** | Recognizes English, Spanish, Hindi, and Mandarin, including simplified and traditional Chinese labels. |
-| **Persistent Preferences** | Saves display settings and manual sponsored ASINs through the browser's extension storage. |
-| **Dynamic Results** | Processes product cards inserted after the initial page load. |
-| **Minimal Permissions** | Requests only extension storage and access to Amazon.com search pages. |
-| **Local Operation** | Includes no analytics, remote code, third-party dependencies, or product data collection. |
+| [**Sponsored-Label Detection**](docs/capabilities.md#sponsored-label-detection) | Recognizes English, Spanish, Hindi, and Mandarin, including simplified and traditional Chinese labels. |
+| [**Persistent Preferences**](docs/capabilities.md#persistent-preferences) | Saves display settings and manual sponsored ASINs through the browser's extension storage. |
+| [**Dynamic Results**](docs/capabilities.md#dynamic-results) | Processes product cards inserted after the initial page load. |
+| [**Minimal Permissions**](docs/capabilities.md#minimal-permissions) | Requests only extension storage and access to Amazon.com search pages. |
+| [**Local Operation**](docs/capabilities.md#local-operation) | Includes no analytics, remote code, third-party dependencies, or developer-operated data collection. |
 
 </details>
 
