@@ -52,8 +52,6 @@ JANGA is a **search-result organizer, not an ad blocker**. It changes the presen
 <details>
 <summary><strong>AI Agent Install</strong></summary>
 
-Hand this prompt to your AI coding agent. It includes the repository location, the automated installer, and the manual browser step that Chrome and Edge require.
-
 ```text
 Install JANGA from https://github.com/Ablation-Tool/janga for me.
 
@@ -69,31 +67,6 @@ Give me the exact installation folder, then guide me while I manually enable
 Developer mode and choose Load unpacked. Finish by telling me how to open an
 Amazon.com search and confirm that the JANGA panel appears.
 ```
-
-Run the installer directly on macOS or Linux with Git and Bash:
-
-```bash
-git clone https://github.com/Ablation-Tool/janga.git
-cd janga
-bash scripts/install.sh
-```
-
-By default, the script uses `$HOME/janga` and opens Chrome's extension page. It reuses an existing JANGA directory rather than overwriting it and refuses to use a nonempty directory that does not contain JANGA.
-
-Optional settings:
-
-```bash
-# Use a different installation directory
-bash scripts/install.sh "$HOME/extensions/janga"
-
-# Open Microsoft Edge instead
-JANGA_BROWSER=edge bash scripts/install.sh
-
-# Prepare the files without launching a browser
-JANGA_NO_OPEN=1 bash scripts/install.sh
-```
-
-The script downloads and verifies the extension files but cannot complete **Developer mode** and **Load unpacked** for you. Chrome and Edge intentionally require those steps in their extension interface. Windows users can follow the manual installation section or let their agent adapt the process for Git Bash or WSL.
 
 </details>
 
