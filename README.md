@@ -117,6 +117,8 @@ Select the folder that directly contains `manifest.json`, `content.js`, and the 
 
 </details>
 
+## Operations
+
 <details>
 <summary><strong>Use JANGA on Amazon</strong></summary>
 
