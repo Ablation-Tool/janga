@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "JANGA",
   "version": "1.0.0",
-  "description": "Separate or hide sponsored results, combine search pages, and sort loaded products by displayed price.",
+  "description": "Organize Amazon search results, manage sponsored product cards, combine pages, and sort loaded products by displayed price.",
   "permissions": ["storage"],
   "content_scripts": [
     {

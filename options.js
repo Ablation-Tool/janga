@@ -21,13 +21,16 @@ async function restoreOptions() {
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
 
-  await chrome.storage.sync.set({
-    sponsoredMode: form.elements.sponsoredMode.value,
-    resultCount: Number(form.elements.resultCount.value),
-    priceOrder: form.elements.priceOrder.value
-  });
-
-  showStatus('Defaults saved. Refresh open Amazon searches to use them.');
+  try {
+    await chrome.storage.sync.set({
+      sponsoredMode: form.elements.sponsoredMode.value,
+      resultCount: Number(form.elements.resultCount.value),
+      priceOrder: form.elements.priceOrder.value
+    });
+    showStatus('Defaults saved. Refresh open Amazon searches to use them.');
+  } catch (error) {
+    showStatus(`Could not save options: ${error.message}`);
+  }
 });
 
 restoreOptions().catch((error) => {

@@ -6,6 +6,13 @@
     priceOrder: 'original'
   };
   const VALID_COUNTS = [0, 10, 100, 200, 300];
+  const SPONSORED_LABELS = new Set([
+    'sponsored',
+    'patrocinado',
+    'प्रायोजित',
+    '赞助',
+    '贊助'
+  ]);
   const MAX_PAGE_REQUESTS = 30;
 
   if (!/^\/s(?:\/|$)/.test(location.pathname) || document.querySelector('#acr-panel-host')) {
@@ -16,6 +23,7 @@
     settings: { ...DEFAULTS },
     records: new Map(),
     byAsin: new Map(),
+    manualSponsoredAsins: new Set(),
     sequence: 0,
     resultContainer: null,
     nextPage: (Number(new URL(location.href).searchParams.get('page')) || 1) + 1,
@@ -71,6 +79,7 @@
           <button class="stop" type="button" hidden>Stop loading</button>
         </div>
         <p class="status" role="status" aria-live="polite">Scanning search results…</p>
+        <p class="note"><strong>Search-result organizer—not an ad blocker.</strong> JANGA only organizes sponsored product cards after Amazon delivers them. Banners, other ads, trackers, and advertising requests are unaffected.</p>
         <p class="note">Price sorting covers loaded products only. Shipping, coupons, and unselected variations are not included.</p>
       </div>
     `;
@@ -94,13 +103,17 @@
         priceOrder: wrapper.querySelector('#acr-price-order').value
       });
 
+      let storageError = null;
       try {
         await chrome.storage.sync.set(settings);
       } catch (error) {
-        setStatus(`Settings could not be saved: ${error.message}`, true);
+        storageError = error;
       }
 
       await applySettings(settings, true);
+      if (storageError) {
+        setStatus(`Settings applied to this page but could not be saved: ${storageError.message}`, true);
+      }
     });
 
     wrapper.querySelector('.stop').addEventListener('click', () => {
@@ -151,12 +164,21 @@
   }
 
   function isSponsored(card) {
+    if (state.manualSponsoredAsins.has(card.dataset.asin?.trim())) {
+      return true;
+    }
+
     if (card.querySelector('[data-component-type="sp-sponsored-result"], .puis-sponsored-label-text, [data-cy="sponsored-label"], [aria-label="Sponsored"]')) {
       return true;
     }
 
-    return Array.from(card.querySelectorAll('.a-color-secondary, .a-size-mini, .a-size-small'))
-      .some((element) => element.textContent.trim().replace(/:$/, '').toLowerCase() === 'sponsored');
+    return Array.from(card.querySelectorAll('.a-color-secondary, .a-size-mini, .a-size-small, [aria-label]'))
+      .some((element) => SPONSORED_LABELS.has(element.textContent.trim().replace(/[:：]$/, '').toLowerCase()));
+  }
+
+  function shouldSkipDuplicate(card) {
+    const existing = state.byAsin.get(card.dataset.asin?.trim());
+    return Boolean(existing && (!existing.sponsored || isSponsored(card)));
   }
 
   function registerCard(card) {
@@ -169,9 +191,16 @@
       return null;
     }
 
-    if (state.byAsin.has(asin)) {
-      card.classList.add('acr-hidden');
-      return null;
+    const sponsored = isSponsored(card);
+    const existing = state.byAsin.get(asin);
+    if (existing) {
+      if (!existing.sponsored || sponsored) {
+        card.classList.add('acr-hidden');
+        return null;
+      }
+      existing.card.remove();
+      existing.anchor.remove();
+      state.records.delete(existing.card);
     }
 
     if (!state.resultContainer) {
@@ -185,13 +214,66 @@
       card,
       anchor,
       asin,
-      sponsored: isSponsored(card),
+      sponsored,
       sequence: state.sequence++
     };
 
     state.records.set(card, record);
     state.byAsin.set(asin, record);
+    updateSponsorToggle(record);
     return record;
+  }
+
+  function updateSponsorToggle(record) {
+    const manuallyMarked = state.manualSponsoredAsins.has(record.asin);
+    if (record.sponsored && !manuallyMarked) {
+      record.button?.remove();
+      record.button = null;
+      return;
+    }
+
+    if (!record.button) {
+      record.button = document.createElement('button');
+      record.button.type = 'button';
+      record.button.className = 'acr-sponsor-toggle';
+      record.button.addEventListener('click', async (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        record.button.disabled = true;
+        await toggleManualSponsored(record);
+      });
+      record.card.append(record.button);
+    }
+
+    record.button.textContent = manuallyMarked ? 'Undo sponsored mark' : 'Mark as sponsored';
+    record.button.setAttribute(
+      'aria-label',
+      manuallyMarked ? `Remove the manual sponsored mark from product ${record.asin}` : `Mark product ${record.asin} as sponsored`
+    );
+  }
+
+  async function toggleManualSponsored(record) {
+    const manuallyMarked = state.manualSponsoredAsins.has(record.asin);
+    if (manuallyMarked) {
+      state.manualSponsoredAsins.delete(record.asin);
+    } else {
+      state.manualSponsoredAsins.add(record.asin);
+    }
+    record.sponsored = isSponsored(record.card);
+
+    let storageError = null;
+    try {
+      await chrome.storage.sync.set({ manualSponsoredAsins: Array.from(state.manualSponsoredAsins) });
+    } catch (error) {
+      storageError = error;
+    }
+
+    updateSponsorToggle(record);
+    record.button && (record.button.disabled = false);
+    await applySettings(state.settings, true);
+    if (storageError) {
+      setStatus(`Sponsored mark applied to this page but could not be saved: ${storageError.message}`, true);
+    }
   }
 
   function scanCards(root = document) {
@@ -418,7 +500,7 @@
         let added = 0;
         for (const sourceCard of cards) {
           const asin = sourceCard.dataset.asin?.trim();
-          if (!asin || state.byAsin.has(asin)) {
+          if (!asin || shouldSkipDuplicate(sourceCard)) {
             continue;
           }
 
@@ -508,7 +590,13 @@
 
     startObserver();
     try {
-      const stored = await chrome.storage.sync.get(DEFAULTS);
+      const stored = await chrome.storage.sync.get({ ...DEFAULTS, manualSponsoredAsins: [] });
+      const manualAsins = Array.isArray(stored.manualSponsoredAsins) ? stored.manualSponsoredAsins : [];
+      state.manualSponsoredAsins = new Set(manualAsins.filter((asin) => typeof asin === 'string'));
+      for (const record of state.records.values()) {
+        record.sponsored = isSponsored(record.card);
+        updateSponsorToggle(record);
+      }
       await applySettings(normalizeSettings(stored), true);
     } catch (error) {
       await applySettings(DEFAULTS, false);

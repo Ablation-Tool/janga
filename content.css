@@ -25,6 +25,26 @@
   margin-top: 16px;
 }
 
+.acr-sponsor-toggle {
+  position: relative;
+  z-index: 2;
+  display: block;
+  margin: 8px 0;
+  padding: 5px 9px;
+  border: 1px solid #888c8c;
+  border-radius: 6px;
+  background: #fff;
+  color: #0f1111;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+
+.acr-sponsor-toggle:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
 #acr-panel-host {
   position: fixed;
   right: 18px;

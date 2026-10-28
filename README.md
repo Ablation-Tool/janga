@@ -5,14 +5,22 @@ A local, dependency-free Chrome and Edge extension that cleans up Amazon.com sea
 ## Features
 
 - Show sponsored products in their original positions, move them into a separate collapsible section, or always hide them.
+- Mark missed ads as sponsored with one click, persist those marks across searches, and undo manual marks later.
+- Detect sponsored labels in English, Spanish, Hindi, and Mandarin (simplified and traditional Chinese).
 - Display 10, 100, 200, or 300 organic products by combining successive search-result pages.
 - Sort loaded organic products by displayed price, low to high or high to low.
 - Save preferences across searches and browsers that support extension storage sync.
 - Stop an in-progress page load at any time.
 
-No analytics, remote code, or product data collection is included. The extension only runs on Amazon.com search pages.
+## Search-result organizer—not an ad blocker
 
-The sponsored filter currently targets product cards in the search-result list. Large brand banners and other advertising modules outside that list are not currently handled.
+JANGA is a **search-result organizer**, not a general-purpose ad blocker. It changes how Amazon.com search results are displayed in your browser after Amazon delivers the page.
+
+- It organizes, separates, or hides sponsored **product cards in the search-result list** according to your preferences.
+- It does not block advertising requests, prevent sponsored content from being delivered, block trackers, or interfere with Amazon's advertising systems.
+- It does not remove large brand banners, sponsored brand modules, video ads, pop-ups, or advertising outside the product-result list.
+- Manual sponsored marks are personal display preferences saved for your browser. They are not spam reports, seller reports, or complaints submitted to Amazon.
+- It only runs on Amazon.com search pages and includes no analytics, remote code, or product data collection.
 
 ## Install
 
