@@ -118,7 +118,7 @@ Implementation: [`content.js`](../content.js) and [`options.js`](../options.js).
 
 ### Dynamic Results
 
-A `MutationObserver` watches for product cards inserted after the initial scan. JANGA classifies new cards, applies the current display mode, and updates manual controls.
+A `MutationObserver` watches for product cards inserted, removed, or replaced after the initial scan. JANGA discards stale card records, classifies new cards, applies the current display mode, and updates manual controls.
 
 Fetched cards have script elements removed before insertion. Lazy-loaded image attributes are normalized so imported products remain usable. JANGA does not inject third-party code into these cards.
 

@@ -276,7 +276,25 @@
     }
   }
 
+  function pruneRemovedCards() {
+    for (const record of state.records.values()) {
+      if (record.card.isConnected && record.anchor.isConnected) {
+        continue;
+      }
+      record.card.remove();
+      record.anchor.remove();
+      state.records.delete(record.card);
+      if (state.byAsin.get(record.asin) === record) {
+        state.byAsin.delete(record.asin);
+      }
+    }
+    if (state.resultContainer && !state.resultContainer.isConnected) {
+      state.resultContainer = null;
+    }
+  }
+
   function scanCards(root = document) {
+    pruneRemovedCards();
     const cards = [];
     if (root instanceof Element && root.matches(CARD_SELECTOR)) {
       cards.push(root);
@@ -563,7 +581,7 @@
 
   function startObserver() {
     state.observer = new MutationObserver((mutations) => {
-      if (state.scanScheduled || !mutations.some((mutation) => mutation.addedNodes.length > 0)) {
+      if (state.scanScheduled || !mutations.some((mutation) => mutation.addedNodes.length > 0 || mutation.removedNodes.length > 0)) {
         return;
       }
 
